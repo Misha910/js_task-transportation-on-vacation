@@ -5,21 +5,23 @@
  */
 
 function calculateRentalCost(days) {
-  const preicOneDay = 40;
-  const bigDiscount = 50;
-  const somoulDiscount = 20;
+  const PRICE_PER_DAY = 40;
+  const LONG_TERM_DAYS = 7;
+  const LONG_TERM_DISCOUNT = 50;
+  const MID_TERM_DAYS = 3;
+  const MID_TERM_DISCOUNT = 20;
 
-  if (days >= 7) {
-    return days * preicOneDay - bigDiscount;
+  const basePrice = days * PRICE_PER_DAY;
+
+  if (days >= LONG_TERM_DAYS) {
+    return basePrice - LONG_TERM_DISCOUNT;
   }
 
-  if (days >= 3 && days < 7) {
-    return days * preicOneDay - somoulDiscount; // write code here
+  if (days >= MID_TERM_DAYS) {
+    return basePrice - MID_TERM_DISCOUNT; // write code here
   }
 
-  if (days < 3) {
-    return days * preicOneDay;
-  }
+  return basePrice;
 }
 
 module.exports = calculateRentalCost;
